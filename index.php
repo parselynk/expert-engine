@@ -6,14 +6,14 @@
  * Time: 13:54
  */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once 'vendor/autoload.php';
-
 
 use Aws\Comprehend\ComprehendClient;
 use NLP\Services\NLPApi;
+
+/**
+ * configuration
+ */
 
 $sharedConfig = [
     'profile' => 'default',
@@ -21,13 +21,18 @@ $sharedConfig = [
     'version' => 'latest'
 ];
 
+/**
+ * initilize ComprehendClient
+ */
 $comprehand = new ComprehendClient($sharedConfig);
+
+/**
+ * initialize API
+ */
 $library = new NLPApi($comprehand);
 
-//$result = $comprehand->detectEntities(['Text'=>'Here I am at berlin hackathon and checking this today', 'LanguageCode' => 'en']);
 
-$result = $library->detectEntities('Here I am at berlin hackathon and checking this today');
-
-//var_dump($result);
-
-//var_dump($result);
+/**
+ * example of how to call API
+ * $result = $library->getParamsFromText('Here I am at berlin hackathon and checking this today and paris also yesterday');
+ */

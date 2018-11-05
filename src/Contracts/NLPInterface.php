@@ -2,6 +2,8 @@
 
 namespace NLP\Contracts;
 
+use NLP\Library\DealParameterBag;
+
 interface NLPInterface
 {
     /**

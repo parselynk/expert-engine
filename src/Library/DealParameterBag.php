@@ -2,33 +2,35 @@
 
 namespace NLP\Library;
 
-use NLP\Contracts\NLPInterface;
-
-class DealParameterBag implements NLPInterface
+class DealParameterBag
 {
-    private $prices;
     private $dates;
     private $locations;
 
     /**
      * DealParameterBag constructor.
-     * @param array $prices
      * @param array $dates
      * @param array $locations
      */
-    public function __construct(array $prices = [], array $dates = [], array $locations = [])
+    public function __construct(array $dates = [], array $locations = [])
     {
-        $this->prices = $prices;
         $this->dates = $dates;
         $this->locations = $locations;
     }
 
     /**
-     * @param string $text
-     * @return DealParameterBag
+     * @return mixed
      */
-    public function getParamsFromText(string $text): DealParameterBag
+    public function getDates()
     {
-        return $this;
+        return $this->dates;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLocations(): array
+    {
+        return $this->locations;
     }
 }
